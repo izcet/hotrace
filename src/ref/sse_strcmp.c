@@ -6,14 +6,9 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:17:18 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 18:17:38 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/13 19:01:59 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "str.h"
-#ifdef TEST
-# include <stdio.h>
-#endif
 
 int        sse_strcmp(const char *s1, const char *s2)
 {

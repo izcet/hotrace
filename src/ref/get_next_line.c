@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 15:17:03 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:07:20 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/13 17:56:34 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ static int		cleanup(char **stat, int fd, char *buff, char *ret)
 	return (-1);
 }
 
-int				get_next_line(char **line)
+int				get_next_line(const int fd, char **line)
 {
-	static char		*stat;
+	static char		*stat[15000];
 	int				br;
 	char			*buffer;
 	char			*ret;
 
 	br = 1;
-	if ((line == NULL) || BUFF_SIZE <= 0)
+	if (fd < 0 || (line == NULL) || BUFF_SIZE <= 0)
 		return (-1);
-	if (stat != NULL)
-		ret = gnl_concat(stat, "", 1, 0);
+	if (stat[fd] != NULL)
+		ret = gnl_concat(stat[fd], "", 1, 0);
 	else
 		ret = gnl_concat("", "", 0, 0);
 	stat[fd] = NULL;

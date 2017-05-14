@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 17:50:02 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:07:25 by irhett           ###   ########.fr       */
+/*   Created: 2017/05/13 19:30:32 by irhett            #+#    #+#             */
+/*   Updated: 2017/05/13 20:57:53 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-int		main(void)
+int		read_input(t_table *table, int is_query)
 {
-	int			ret;
-	t_table		*t;
+	static char		*excess;
+	int				br;
 
-	t = init_table(TABLE_SIZE);
-	if (!t)
-		return (1);
-	while ((ret = read_input(t, 0)) > 0)
-		;
-	if (ret < 0)
-		exit(1);
-	while ((ret = read_input(t, 1)) > 0)
-		;
-	if (ret < 0)
-		exit (1);
-	return (0);
+	br = 1;
+	if (BUFF_SIZE <= 0 || !table)
+		return (-1);
+	if (is_query)
+		return (populate_table(table));
+	return (run_queries(table));
 }

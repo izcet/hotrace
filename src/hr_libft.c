@@ -1,32 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hr_libft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 17:50:02 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:07:25 by irhett           ###   ########.fr       */
+/*   Created: 2017/05/13 20:29:08 by irhett            #+#    #+#             */
+/*   Updated: 2017/05/13 20:34:10 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-int		main(void)
+unsigned int	hr_strlen(char *str)
 {
-	int			ret;
-	t_table		*t;
+	unsigned int	i;
 
-	t = init_table(TABLE_SIZE);
-	if (!t)
-		return (1);
-	while ((ret = read_input(t, 0)) > 0)
-		;
-	if (ret < 0)
-		exit(1);
-	while ((ret = read_input(t, 1)) > 0)
-		;
-	if (ret < 0)
-		exit (1);
+	i = 0;
+	if (str)
+	{
+		while (*str)
+			i++;
+	}
+	return (i);
+}
+
+void			hr_putstr(char *str)
+{
+	write(1, str, hr_strlen(str));
+}
+
+void			hr_bzero(void *ptr, unsigned int size)
+{
+	if (ptr)
+	{
+		while (size)
+		{
+			*ptr = 0;
+			ptr++;
+			size--;
+		}
+	}
+}
+
+char			hr_strcmp(char *s1, char *s2)
+{
 	return (0);
 }

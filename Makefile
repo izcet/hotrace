@@ -6,19 +6,19 @@
 #    By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/13 17:43:42 by irhett            #+#    #+#              #
-#    Updated: 2017/05/13 17:50:49 by irhett           ###   ########.fr        #
+#    Updated: 2017/05/13 21:07:22 by irhett           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	hotrace
 
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -Ofast -O3
 XFLAGS		=	#-flags -for -X
 FLAGS		=	$(CFLAGS) $(XFLAGS)
 
 SRC_DIR		=	src
-SRC_FILE	=	main.c
+SRC_FILE	=	main.c read_input.c t_table.c t_entry.c hr_libft.c
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
 OBJ_DIR		=	obj
