@@ -6,7 +6,7 @@
 #    By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/13 17:43:42 by irhett            #+#    #+#              #
-#    Updated: 2017/05/13 17:43:42 by irhett           ###   ########.fr        #
+#    Updated: 2017/05/13 17:50:49 by irhett           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ XFLAGS		=	#-flags -for -X
 FLAGS		=	$(CFLAGS) $(XFLAGS)
 
 SRC_DIR		=	src
-SRC_FILE	=	##!!##
+SRC_FILE	=	main.c
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
 OBJ_DIR		=	obj

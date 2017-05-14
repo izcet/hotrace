@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 17:43:42 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 17:53:09 by irhett           ###   ########.fr       */
+/*   Created: 2017/05/13 17:50:02 by irhett            #+#    #+#             */
+/*   Updated: 2017/05/13 17:50:21 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include "hotrace.h"
 
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+int		main(void)
+{
 
-#endif
+
+	return (0);
+}
