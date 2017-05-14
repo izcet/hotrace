@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 17:50:02 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:07:25 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 00:44:47 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 int		main(void)
 {
-	int			ret;
 	t_table		*t;
 
 	t = init_table(TABLE_SIZE);
 	if (!t)
 		return (1);
-	while ((ret = read_input(t, 0)) > 0)
-		;
-	if (ret < 0)
-		exit(1);
-	while ((ret = read_input(t, 1)) > 0)
-		;
-	if (ret < 0)
-		exit (1);
+	if (populate_table(t))
+		return (1);
+	if (run_queries(t))
+		return (1);
+	//del_table(t);
 	return (0);
 }

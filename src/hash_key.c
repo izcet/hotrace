@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 21:29:18 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:53:05 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 01:08:17 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ unsigned int	hash_key(char *str, unsigned int size)
 	char			c;
 
 	hash = 0;
-	while (c = *str++)
+	while ((c = *str++))
 		hash = c + (hash << 6) + (hash << 16) - hash;
 	return (hash % size);
 }

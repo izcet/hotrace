@@ -6,11 +6,13 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:01:05 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 19:42:52 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 00:45:27 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		*del_table(t_table *t)
+#include "hotrace.h"
+
+void		del_table(t_table *t)
 {
 	if (t)
 	{
@@ -18,11 +20,11 @@ void		*del_table(t_table *t)
 		{
 			while (t->size > 0)
 			{
-				size--;
+				t->size--;
 				if (t->entries[t->size])
 					del_entry_line(t->entries[t->size]);
 			}
-			free(entries);
+			free(t->entries);
 		}
 		free(t);
 	}

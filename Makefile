@@ -6,7 +6,7 @@
 #    By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/13 17:43:42 by irhett            #+#    #+#              #
-#    Updated: 2017/05/13 21:55:45 by irhett           ###   ########.fr        #
+#    Updated: 2017/05/14 00:33:54 by irhett           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ SRC_FILE	=	main.c \
 				t_table.c \
 				t_entry.c \
 				hr_libft.c \
-				read_input.c \
 				add_entry.c \
 				hash_key.c \
 				populate_table.c \
+				run_queries.c \
+				get_value.c \
+				get_next_line.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC_FILE))
 

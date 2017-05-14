@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 21:24:07 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:29:11 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 00:44:32 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	add_entry(t_table *t, t_entry *e)
 		i = hash_key(e->key, t->size);
 		if (t->entries[i])
 		{
-			hr_ptrstr("COLLISION!\n"); // remove later
+//			hr_putstr("COLLISION!\n"); // remove later
 			e->next = t->entries[i];
 		}
 		t->entries[i] = e;

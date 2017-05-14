@@ -6,31 +6,60 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 15:17:03 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:07:20 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 00:54:27 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 
-static int		scan(char *str, int newline)
+char			*concat(char *str1, char *str2, int mall_1, int mall_2)
 {
-	int		i;
+	int		len1;
+	int		len2;
+	char	*ans;
 
-	i = 0;
-	while (str[i] != '\0')
+	len1 = 0;
+	len2 = 0;
+	while (str1[len1])
+		len1++;
+	while (str2[len2])
+		len2++;
+	ans = (char*)malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!ans)
+		return (NULL);
+	len1 = -1;
+	len2 = -1;
+	while (str1[++len1])
+		ans[len1] = str1[len1];
+	while (str2[++len2])
+		ans[len1 + len2] = str2[len2];
+	if (mall_1)
+		free(str1);
+	if (mall_2)
+		free(str2);
+	ans[len1 + len2] = '\0';
+	return (ans);
+}
+
+int				scan(char *str, int newline)
+{
+	int		index;
+
+	index = 0;
+	while (str[index] != '\0')
 	{
-		if (str[i] == DELIM && newline)
-			return (i);
-		i++;
+		if (str[index] == DELIM && newline)
+			return (index);
+		index++;
 	}
 	if (newline)
 		return (-1);
-	return (i);
+	return (index);
 }
 
-static int		copy(char *src, char **dst, char **stat, int fd)
+int				copy(char *src, char **dst, char **stat, int fd)
 {
-	int		i;
+	int		index;
 	int		len;
 	int		ret;
 
@@ -39,23 +68,23 @@ static int		copy(char *src, char **dst, char **stat, int fd)
 	while ((src[len] != DELIM) && (src[len] != '\0'))
 		len++;
 	dst[0] = (char*)malloc(sizeof(char) * len + 1);
-	i = 0;
-	while ((src[i] != DELIM) && (src[i] != '\0'))
+	index = 0;
+	while ((src[index] != DELIM) && (src[index] != '\0'))
 	{
-		dst[0][i] = src[i];
-		i++;
+		dst[0][index] = src[index];
+		index++;
 	}
-	dst[0][i] = '\0';
-	if (src[i] == DELIM)
+	dst[0][index] = '\0';
+	if (src[index] == DELIM)
 	{
 		ret = 1;
-		stat[fd] = gnl_concat(&(src[++i]), "", 0, 0);
+		stat[fd] = concat(&(src[++index]), "", 0, 0);
 	}
 	free(src);
 	return (ret);
 }
 
-static int		cleanup(char **stat, int fd, char *buff, char *ret)
+int				cleanup(char **stat, int fd, char *buff, char *ret)
 {
 	if (stat[fd])
 		free(stat[fd]);
@@ -64,31 +93,31 @@ static int		cleanup(char **stat, int fd, char *buff, char *ret)
 	return (-1);
 }
 
-int				get_next_line(char **line)
+int				get_next_line(const int fd, char **line)
 {
-	static char		*stat;
+	static char		*stat[1];
 	int				br;
 	char			*buffer;
 	char			*ret;
 
 	br = 1;
-	if ((line == NULL) || BUFF_SIZE <= 0)
+	if (fd < 0 || (line == NULL) || BUFF_SIZE <= 0)
 		return (-1);
-	if (stat != NULL)
-		ret = gnl_concat(stat, "", 1, 0);
+	if (stat[0] != NULL)
+		ret = concat(stat[0], "", 1, 0);
 	else
-		ret = gnl_concat("", "", 0, 0);
-	stat[fd] = NULL;
+		ret = concat("", "", 0, 0);
+	stat[0] = NULL;
 	while ((scan(ret, 1) == -1) && br)
 	{
 		buffer = (char*)malloc(sizeof(char) * (BUFF_SIZE + 1));
 		br = read(fd, buffer, BUFF_SIZE);
 		if (br == -1)
-			return (cleanup(stat, fd, buffer, ret));
+			return (cleanup(stat, 0, buffer, ret));
 		buffer[br] = '\0';
-		ret = gnl_concat(ret, buffer, 1, 1);
+		ret = concat(ret, buffer, 1, 1);
 	}
-	if ((copy(ret, line, stat, fd) == 0) && (br == 0) && (scan(ret, 0) == 0))
+	if ((copy(ret, line, stat, 0) == 0) && (br == 0) && (scan(ret, 0) == 0))
 		return (0);
 	return (1);
 }
