@@ -6,7 +6,7 @@
 #    By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/13 17:43:42 by irhett            #+#    #+#              #
-#    Updated: 2017/05/13 21:07:22 by irhett           ###   ########.fr        #
+#    Updated: 2017/05/13 21:55:45 by irhett           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,20 @@ XFLAGS		=	#-flags -for -X
 FLAGS		=	$(CFLAGS) $(XFLAGS)
 
 SRC_DIR		=	src
-SRC_FILE	=	main.c read_input.c t_table.c t_entry.c hr_libft.c
+SRC_FILE	=	main.c \
+				t_table.c \
+				t_entry.c \
+				hr_libft.c \
+				read_input.c \
+				add_entry.c \
+				hash_key.c \
+				populate_table.c \
+
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
 OBJ_DIR		=	obj
 OBJ_FILE	=	$(SRC_FILE:.c=.o)
-OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILE))
+	OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILE))
 
 INC_DIR		=	-I inc
 

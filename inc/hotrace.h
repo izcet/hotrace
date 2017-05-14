@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 17:43:42 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/13 21:04:39 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/13 21:55:43 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_table
 	t_entry			**entries;
 }					t_table;
 
-//unsigned int		hash_key(char *key, unsigned int size);
+unsigned int		hash_key(char *key, unsigned int size);
 
 t_table				*init_table(unsigned int size);
 t_entry				*init_entry(char *key, char *value);
@@ -42,8 +42,8 @@ void				del_entry_line(t_entry *e);
 t_entry				*del_entry(t_entry *e);
 
 int					read_input(t_table *table, int is_query);
-//int					populate_table(t_table *t);
-//int					run_queries(t_table *t);
+int					populate_table(t_table *t, char **excess);
+//int					run_queries(t_table *t, char **excess);
 
 void				add_entry(t_table *t, t_entry *e);
 
