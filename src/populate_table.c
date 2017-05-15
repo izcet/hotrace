@@ -6,7 +6,7 @@
 /*   By: irhett <irhett@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 20:57:58 by irhett            #+#    #+#             */
-/*   Updated: 2017/05/14 00:44:48 by irhett           ###   ########.fr       */
+/*   Updated: 2017/05/14 23:39:15 by irhett           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			populate_table(t_table *t)
 		{
 			if ((ret = get_next_line(0, &val)) <= 0)
 				return (1);
-			if (!*val)
+			if (!val || !*val)
 				return (1);
 			temp = init_entry(key, val);
 			add_entry(t, temp);
